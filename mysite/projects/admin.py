@@ -13,8 +13,9 @@ class InvoiceInline(admin.TabularInline):
     extra = 0
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'start_date', 'end_date')
+    list_display = ('name', 'start_date', 'end_date', 'client', 'manager')
     inlines = [JobInline, InvoiceInline]
+    list_editable = ('start_date', 'end_date', 'client', 'manager')
 
 class ClientAdmin(admin.ModelAdmin):
     list_display = ('name', 'lastname', 'company', 'contacts')
