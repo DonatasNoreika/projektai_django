@@ -3,8 +3,28 @@ from .models import Project, Client, Employee, Job, Invoice
 
 # Register your models here.
 
-admin.site.register(Project)
-admin.site.register(Client)
-admin.site.register(Employee)
+
+class JobInline(admin.TabularInline):
+    model = Job
+    extra = 0
+
+class InvoiceInline(admin.TabularInline):
+    model = Invoice
+    extra = 0
+
+class ProjectAdmin(admin.ModelAdmin):
+    list_display = ('name', 'start_date', 'end_date')
+    inlines = [JobInline, InvoiceInline]
+
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('name', 'lastname', 'company', 'contacts')
+
+
+class EmployeeAdmin(admin.ModelAdmin):
+    list_display = ('name', 'lastname', 'position')
+
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Client, ClientAdmin)
+admin.site.register(Employee, EmployeeAdmin)
 admin.site.register(Job)
 admin.site.register(Invoice)

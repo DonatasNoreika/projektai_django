@@ -9,7 +9,7 @@ class Project(models.Model):
     end_date = models.DateField('End date')
     client = models.ForeignKey('Client', on_delete=models.SET_NULL, null=True)
     manager = models.ForeignKey(User, verbose_name="Manager", on_delete=models.SET_NULL, null=True)
-    employees = models.ManyToManyField('Employee', verbose_name="Employees", null=True)
+    employees = models.ManyToManyField('Employee', verbose_name="Employees")
 
     def __str__(self):
         return f'{self.id} {self.name}'
