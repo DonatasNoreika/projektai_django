@@ -7,3 +7,8 @@ from .models import Project
 class ProjectListView(generic.ListView):
     model = Project
     template_name = 'project_list.html'
+
+
+class ProjectDetailView(generic.DetailView):
+    model = Project
+    template_name = 'project.html'
